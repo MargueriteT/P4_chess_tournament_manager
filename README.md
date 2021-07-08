@@ -17,7 +17,8 @@ This program is a **Chess Tournament Manager**. It can be used to manage the
    
 Clone the repository
 --------------------
-Download the repository from this link to the local folder you want.
+Download the repository from this link to the local folder you want:
+https://github.com/MargueriteT/P4_chess_tournament_manager.git
 
 Installation
 ------------

@@ -165,7 +165,8 @@ class MainViews:
         the players and their score for the round. The user is invited to
         continue or go back to the main menu.
         """
-        self.commands.display_message(" You enter all score for this round : \n")
+        self.commands.display_message(" You enter all score for this round : "
+                                      "\n")
 
         for player in players_list:
             self.commands.display_message(
