@@ -36,9 +36,8 @@ Open your Cmd and proceed as indicated:
 
 Flake8 Report
 -------------
-Run the following command line :
-flake8 --exclude .git,__pycache__,venv/,env/ --format=html --htmldir=flake
--report
+Run the following command line : flake8
+
 
  
 

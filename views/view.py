@@ -193,7 +193,9 @@ class MainViews:
             f"The tournament {tournament.name} is finished. The winner "
             f"of the tournament is {tournament.winner.first_name} "
             f"{tournament.winner.last_name} with a final score of "
-            f"{tournament.winner.finale}. \n\nThe ranking is : \n ")
+            f"{tournament.winner.final_score[tournament.name]}. \n\nThe "
+            f"ranking "
+            f"is : \n ")
 
         x = 1
         for player in tournament.tournament_players:
