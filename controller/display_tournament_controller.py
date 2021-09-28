@@ -36,7 +36,7 @@ class DatabaseTournamentDisplay:
         self.main_view.display_tournament_alphabetical_view(
             alphabetical_ordered)
         # Link to the main menu
-        self.command.display_message("\n\n1 - Go back to the main menu")
+        self.command.display_message("\n\n1 - Go back to the main menu  ")
         commands = {"1": self.main_menu}
         self.command.check_command(commands)()
 
@@ -53,7 +53,7 @@ class DatabaseTournamentDisplay:
         self.main_view.display_tournament_date_view(
             date_ordered)
         # Link to the main menu
-        self.command.display_message("\n\n1 - Go back to the main menu")
+        self.command.display_message("\n\n1 - Go back to the main menu  ")
         commands = {"1": self.main_menu}
         self.command.check_command(commands)()
 
@@ -62,8 +62,11 @@ class DatabaseTournamentDisplay:
         tournament's players to be sorted and then display the list of
         players as chosen by the user.
         """
+        # Recover alphabetical list
+        alphabetical_ordered = \
+            self.database.display_tournaments_alphabetical_order()
         # View to search the tournament
-        tournament = self.search_a_tournament()
+        tournament = self.search_a_tournament(alphabetical_ordered)
         self.command.display_message(
             f"How do you want to display the list of players of the "
             f"tournament {tournament['name']} ?\n"
@@ -77,7 +80,7 @@ class DatabaseTournamentDisplay:
             alpha = self.database.sort_players_alphabetical_order(
                 tournament['list_of_players'])
             self.main_view.display_players_alphabetical_views(alpha)
-            self.command.display_message("\n\n1 - Go back to the main menu")
+            self.command.display_message("\n\n1 - Go back to the main menu  ")
             commands = {"1": self.main_menu}
             self.command.check_command(commands)()
 
@@ -86,11 +89,11 @@ class DatabaseTournamentDisplay:
                                                       'list_of_players'])
             self.main_view.display_players_by_rank_views(ranking)
             # Commands to go back to main menu
-            self.command.display_message("\n\n1 - Go back to the main menu")
+            self.command.display_message("\n\n1 - Go back to the main menu  ")
             commands = {"1": self.main_menu}
             self.command.check_command(commands)()
         else:
-            self.command.display_message("\n\n1 - Go back to the main menu")
+            self.command.display_message("\n\n1 - Go back to the main menu  ")
             commands = {"1": self.main_menu}
             self.command.check_command(commands)()
 
@@ -98,17 +101,20 @@ class DatabaseTournamentDisplay:
         """This function invites an user to choose the tournament he wants
         details on and then display it.
         """
+        # Recover alphabetical list
+        alphabetical_ordered = \
+            self.database.display_tournaments_alphabetical_order()
 
         # View to search a tournament
-        tournament = self.search_a_tournament()
+        tournament = self.search_a_tournament(alphabetical_ordered)
         # View to display details
         self.main_view.display_detailed_tournament(tournament)
         # Commands to go back to main menu
-        self.command.display_message("\n\n1 - Go back to the main menu")
+        self.command.display_message("\n\n1 - Go back to the main menu  ")
         commands = {"1": self.main_menu}
         self.command.check_command(commands)()
 
-    def search_a_tournament(self):
+    def search_a_tournament(self, list):
         """This function allows the search of a tournament by name and if
         necessary by name and location and then return the tournament's
         data. If the tournament doesn't exist in the database then the user
@@ -116,7 +122,7 @@ class DatabaseTournamentDisplay:
         """
 
         # View with input and return the user input
-        name = self.main_view.search_a_tournament_by_name_view()
+        name = self.main_view.search_a_tournament_by_name_view(list)
         # Search with the name in the database
         tournament = self.database.search_tournament_in_database_with_name(
             name)

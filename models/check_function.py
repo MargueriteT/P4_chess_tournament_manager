@@ -16,11 +16,11 @@ class Commands:
         """ Allows the user to enter an input and check is validity before
         returned command.
         """
-        command = input("\t Please enter your command")
+        command = input("\t Please enter your command   ")
 
         while command not in commands:
             print("The command is invalid, please try again")
-            command = input("Enter your new command")
+            command = input("Enter your new command   ")
         return commands[command]
 
     def valid_action(self):
@@ -29,11 +29,11 @@ class Commands:
                              "\t\t 1 - Yes \n"
                              "\t\t 2 - No \n")
         commands = {"1": "yes", "2": "no"}
-        command = input("Please enter your command")
+        command = input("Please enter your command  ")
 
         while command not in commands:
             print("The command is invalid, please try again")
-            command = input("Please enter your command")
+            command = input("Please enter your command  ")
         return commands[command]
 
 

@@ -10,6 +10,7 @@ class MainViews:
         self.check_round = RoundInputChecker()
 
     """ Main view """
+
     def main_menu_views(self, commands):
         """This function display the main menu and return the user commands."""
 
@@ -25,6 +26,7 @@ class MainViews:
         return self.commands.check_command(commands)()
 
     """Play a tournament views"""
+
     def create_tournament_view(self):
         """This function display the view to enter all information to create
         a new tournament and return those information.
@@ -33,7 +35,7 @@ class MainViews:
         self.commands.display_message(
             "CHESS TOURNAMENT \n\n\n "
             "\t You choose to create a new tournament. "
-            "Please complete all information necessary\n ")
+            "Please complete all information necessary  \n ")
 
         name = self.check_tournament.check_name()
         location = self.check_tournament.check_location()
@@ -43,7 +45,7 @@ class MainViews:
         number_of_rounds = self.check_tournament.check_number_of_rounds()
         type_of_game = self.check_tournament.check_type_of_game()
         return name, location, starting_date, ending_date, number_of_players, \
-            number_of_rounds, type_of_game
+               number_of_rounds, type_of_game
 
     def register_tournament_view(self):
         """This function display a view to inform the user that the
@@ -127,7 +129,7 @@ class MainViews:
 
         self.commands.display_message(
             "CHESS TOURNAMENT \n\n\n \t "
-            "Please enter the name of the round\n ")
+            "Please enter the name of the round \n ")
         round_name = self.check_round.check_the_round_name()
         start = self.check_round.check_time_round()
         return round_name, start
@@ -212,6 +214,7 @@ class MainViews:
         return validate
 
     """Resume a tournament views """
+
     def resume_tournament_view(self, tournaments):
         """This function display a view that invites the user to choose the
         tournament he wants to resume among a list of tournament with an
@@ -264,6 +267,7 @@ class MainViews:
         return tournament_name, tournament_location
 
     """Display tournament views"""
+
     def display_tournaments_view(self, commands):
         """This function display the view of a menu allowing the user to
         choose which tournament(s) he he wants to display and how.
@@ -274,7 +278,7 @@ class MainViews:
             "\t How do you want to display tournaments:\n "
             "\t\t 1 - Alphabetical ?\n"
             "\t\t 2 - Date ?\n"
-            "If you want to see specifics about one tournament: \n"
+            "\t If you want to see specifics about one tournament: \n"
             "\t\t 3 - All details \n"
             "\t\t 4 - The list of players \n"
             "\t\t 5 - Main menu \n")
@@ -311,23 +315,34 @@ class MainViews:
 
         for tournament in list_t:
             self.commands.display_message(
+                f"{tournament['beginning_date']} to "
+                f"{tournament['ending_date']}, type of game: "
                 f"Name: {tournament['name']} take place in: "
                 f"{tournament['location']}, start on:  "
-                f"from: {tournament['beginning_date']} to: "
-                f"{tournament['ending_date']}, type of game: "
                 f"{tournament['type_of_game']}, status: "
                 f"{tournament['status']}. ")
         self.commands.display_message("")
 
-    def search_a_tournament_by_name_view(self):
+    def search_a_tournament_by_name_view(self, list_t):
         """This function display the view allowing an user to search for a
         tournament by name and return the name of the tournament.
         """
 
         self.commands.display_message(
-            "CHESS TOURNAMENT \n\n "
-            "You choose to search a specific tournament. Please enter the "
-            "name of the tournament you're looking for: \n")
+            "CHESS TOURNAMENT \n\n ")
+        for tournament in list_t:
+            self.commands.display_message(
+                f"Name: {tournament['name']} takes place in: "
+                f"{tournament['location']}, start on:  "
+                f"from: {tournament['beginning_date']} to : "
+                f"{tournament['ending_date']}, type of game: "
+                f"{tournament['type_of_game']}, status: "
+                f"{tournament['status']}. \n\n")
+
+        self.commands.display_message("\n\n You choose to search a specific "
+                                      "tournament. Please enter the "
+                                      "name of the tournament you're "
+                                      "looking for: \n")
         name = self.check_tournament.check_name()
         return name
 
@@ -345,7 +360,7 @@ class MainViews:
                 f"start on:  {tournament['beginning_date']} and end on: "
                 f"{tournament['ending_date']}, type of game: "
                 f"{tournament['type_of_game']}, status: "
-                f"{tournament['status']}")
+                f"{tournament['status']} \n\n")
         self.commands.display_message(
             "Please enter the location of the one you want to see : \n\n")
         location = self.check_tournament.check_location()
@@ -382,7 +397,7 @@ class MainViews:
                 x += 1
             self.commands.display_message("\n\nDescription of the tournament")
             for round_name, list_of_match in tournament[
-                    'list_of_round'].items():
+                'list_of_round'].items():
                 self.commands.display_message(f"\t{round_name}\n")
                 for match in list_of_match:
                     self.commands.display_message(
@@ -396,6 +411,7 @@ class MainViews:
                                           "for this inconvenience.")
 
     """ Display players views"""
+
     def display_players_main_view(self, commands):
         """This function display a view of the menu for the user to choose
         how he wants to display the players of the database.
