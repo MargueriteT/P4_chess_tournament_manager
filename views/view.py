@@ -44,8 +44,9 @@ class MainViews:
         number_of_players = self.check_tournament.check_number_of_players()
         number_of_rounds = self.check_tournament.check_number_of_rounds()
         type_of_game = self.check_tournament.check_type_of_game()
+
         return name, location, starting_date, ending_date, number_of_players, \
-               number_of_rounds, type_of_game
+            number_of_rounds, type_of_game
 
     def register_tournament_view(self):
         """This function display a view to inform the user that the
@@ -396,8 +397,8 @@ class MainViews:
                     f"{x} - {player['first_name']} {player['last_name']}")
                 x += 1
             self.commands.display_message("\n\nDescription of the tournament")
-            for round_name, list_of_match in tournament[
-                'list_of_round'].items():
+            for round_name, list_of_match in \
+                    tournament['list_of_round'].items():
                 self.commands.display_message(f"\t{round_name}\n")
                 for match in list_of_match:
                     self.commands.display_message(
